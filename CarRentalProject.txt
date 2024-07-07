@@ -1,0 +1,172 @@
+package Rental_Car_Project;
+
+public class CarBlc 
+{
+   
+   private String brand ;
+   private String model ;
+  
+   
+  public CarBlc( String brand, String model) 
+    {
+	super();
+	
+	this.brand = brand;
+	this.model = model;
+	
+    }
+
+
+public String getBrand() {
+	return brand;
+}
+
+
+public void setBrand(String brand) {
+	this.brand = brand;
+}
+
+
+public String getModel() {
+	return model;
+}
+
+
+public void setModel(String model) {
+	this.model = model;
+}
+     
+ 
+  
+
+
+
+}
+  
+  
+-----------------------------------------------------------------------------------------------
+
+package Rental_Car_Project;
+
+public class CoustmerBlc 
+{
+   private String coustmerName ;
+   private String adharCardNumber ;
+   private String mobileNumber ;
+   
+   public CoustmerBlc(String coustmerName, String adharCardNumber, String mobileNumber) 
+    {
+	super();
+	this.coustmerName = coustmerName;
+	this.adharCardNumber = adharCardNumber;
+	this.mobileNumber = mobileNumber;
+    }
+
+public String getCoustmerName() {
+	return coustmerName;
+}
+
+public void setCoustmerName(String coustmerName) {
+	this.coustmerName = coustmerName;
+}
+
+public String getAdharCardNumber() {
+	return adharCardNumber;
+}
+
+public void setAdharCardNumber(String adharCardNumber) {
+	this.adharCardNumber = adharCardNumber;
+}
+
+public String getMobileNumber() {
+	return mobileNumber;
+}
+
+public void setMobileNumber(String mobileNumber) {
+	this.mobileNumber = mobileNumber;
+}
+   
+   
+}
+------------------------------------------------------------------------------------------------
+
+package Rental_Car_Project;
+
+import java.util.Scanner;
+
+class MainElc {
+    private String cname;
+    private String cMob;
+    private String cAdhar;
+    private int cday;
+    private String carBrand;
+    private String carModel;
+
+    public void input() {
+        Scanner ma = new Scanner(System.in);
+
+        System.out.println("Enter Customer Name: ");
+        cname = ma.nextLine();
+
+        System.out.println("\nEnter Customer Mobile Number: ");
+        cMob = ma.nextLine();
+
+        System.out.println("\nEnter Customer Aadhar Number: ");
+        cAdhar = ma.nextLine();
+    }
+
+    public void display() {
+        System.out.println("--------Final Bill---------");
+
+        System.out.println("Customer Name: " + cname);
+        System.out.println("Customer Aadhar Number: " + cAdhar);
+        System.out.println("Customer Mobile Number: " + cMob);
+
+        System.out.println("Selected Brand is " + carBrand);
+        System.out.println("Selected Model is " + carModel);
+        System.out.println("Total Fare for " + cday + " days: " + (5000 * cday));
+    }
+
+    public static void main(String[] args) {
+        String[] carBrands = {"Tata", "Mahindra", "KIA"};
+        String[] carModels = {"Nexon", "Bolero", "Seltos"};
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("---------------Welcome to Rental Car Services-------------- ");
+        System.out.println("Rent a car");
+        System.out.println("--------------------------------------");
+
+        System.out.println("Enter Car Brand Name: ");
+        String selectedCarBrand = sc.nextLine();
+
+        System.out.println("Enter Car Model Name: ");
+        String selectedCarModel = sc.nextLine();
+
+        System.out.println("How many days do you want the car for?");
+        int cday = sc.nextInt();
+
+        MainElc me = new MainElc();
+        me.carBrand = selectedCarBrand;
+        me.carModel = selectedCarModel;
+        me.cday = cday;
+
+        boolean validCar = false;
+        for (int i = 0; i < carBrands.length; i++) {
+            if (carBrands[i].equals(selectedCarBrand) && carModels[i].equals(selectedCarModel)) {
+                validCar = true;
+                break;
+            }
+        }
+
+        if (validCar) {
+            me.input();
+            me.display();
+        } else {
+            System.out.println("Invalid car brand or model.");
+        }
+
+        sc.close();
+    }
+}
+
