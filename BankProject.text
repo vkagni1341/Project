@@ -1,0 +1,134 @@
+package Vipul.Bank;
+
+public class BankBlc 
+{
+   private String bankName ;
+   private String bankCustomerName ;
+   private String bankAddress ;
+   private double customerAccountNumber ;
+   private String bankIfscCode ;
+   private double currentBalance ;
+   
+   public BankBlc( String bankName,String bankCustomerName,String bankAddress,double customerAccountNumber,String bankIfscCode ,double currentBalance)
+   {
+	   this.bankName=bankName ;
+	   this.bankCustomerName=bankCustomerName ;
+	   this.bankAddress=bankAddress ;
+	   this.customerAccountNumber=customerAccountNumber ;
+	   this.currentBalance=currentBalance ;
+	   this.bankIfscCode=bankIfscCode ;
+  }
+   public void withdraw (double amount)
+   {
+	 if(currentBalance<=1000)
+	 {
+		 System.out.println("Insufficient Balance!!");
+	 }
+	 else if (amount>currentBalance)
+	 {
+		 System.out.println("Transaction unsuccessfull!!");
+		 System.out.println("Balance amount cannot be less than 1000");
+	 }
+	 else 
+	 {
+		currentBalance-=amount ;
+		
+		System.out.println("Transaction Completed !!!");
+	 }
+   }
+    public void deposite(double amount)
+    {
+    	if(amount<=0)
+    	{
+    		System.out.println("Amount cannot be 0 or negative");
+    	}
+    	else 
+    	{
+    		currentBalance +=amount;
+    		System.out.println("Amount Deposite Succesfully !!!!");
+    	}
+    }
+    public void currentBlance(double currentBlance)
+    {
+    	System.out.println("Current Balance : "+currentBlance);
+    }
+  public void details()
+  {
+	 System.out.println("Customer Details :\n  Coustomer Bank Name : "+bankName+"\n Customer Name : "+ bankCustomerName+ "\n Branch location : "+bankAddress+"\n Account number : "+customerAccountNumber+"\n Current Balance : "+currentBalance );
+  }
+
+}
+---------------------------------------------------------------------------------------------------
+
+
+
+package Vipul.Bank;
+package May_11_Task;
+import java.util.*;
+public class BankElc 
+{
+
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner (System.in);
+		
+		
+		System.out.println("Enter Bank Name : ");
+		String BName = sc.nextLine();
+		
+		System.out.println("Enter Account Holder Name : ");
+		String AOwnerName = sc.nextLine();
+		
+		System.out.println("Enter Branch Name : ");
+		String BranchName = sc.nextLine();
+		
+		System.out.println("Enter Account Number :");
+		double AccNum = sc.nextDouble();
+		
+		System.out.println("Enter Branch IFSC Code : ");
+		String Ifsc = sc.nextLine();
+	            Ifsc = sc.nextLine();
+		
+		System.out.println("Enter Current Account Balance : ");
+		double balance = sc.nextDouble();
+		
+		BankBlc ba = new BankBlc(BName , AOwnerName ,BranchName, AccNum, Ifsc,balance);
+	
+		System.out.println("----------MENU-----------\n");
+		System.out.println("Enter 1 for Withdraw ");
+		System.out.println("Enter 2 for Deposite ");
+		System.out.println("Enter 3 for Check Current Blance ");
+		System.out.println("Enter 4 for Print All Details ");
+		 int ch = sc.nextInt();
+		
+		switch(ch)
+		{
+		case 1 : 
+		   {
+			System.out.println("Enter Withdrow Amount : ");
+			double amount = sc.nextDouble();
+			ba.withdraw(amount);
+			break;
+		   }
+		case 2 :
+		   {
+			 System.out.println("Enter Deposite Amount : ");
+			 double depo = sc.nextDouble();
+			 ba.deposite(depo);
+			 break;
+		   }
+		case 3 :
+		  {
+			ba.currentBlance(balance);
+			break ;
+		  }
+		case 4 :
+		     {
+			   ba.details();
+			   break ;
+		      }
+		}
+		 
+	}
+
+}
